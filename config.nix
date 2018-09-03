@@ -1,12 +1,134 @@
-{
-  packageOverrides = pkgs: with pkgs; {
-    jlotoski = pkgs.buildEnv {
-      name = "jlotoski";
-      paths = [ 
-        byobu
-        git
-        tmux
-      ];
+let unstable = import ~/.nix-defexpr/channels/nixpkgs {};
+in {
+  allowUnfree = true;
+  packageOverrides = super: let self = super.pkgs; in {
+
+    # Listing declarative packages in this set 
+    # rather than a buildEnv allows them to still
+    # be visible to `nix-env -qc` and similar commands.
+    # Note, however, that removing packages from here
+    # won't remove them from the user environment
+    # which will still need to be done imperatively.
+    # Compare that to the buildEnv approach which will
+    # remove packages upon removing them declaratively
+    # and re-installing the resulting buildEnv.
+    #
+    # Install this package set with:
+    #   nix-env -iA <channel_name>.jlotoski [--dry-run]
+    #
+    # Check for updates against various channels with:
+    #   nix-env qc -f <channel_path>
+    #   Where <channel_path> example is:
+    #     ~/.nix-defexpr/channels/<channel_name>
+
+    jlotoski = rec {
+
+      # The following declarative apps are listed
+      # in alphabetical order in each of the following sections:
+      #
+      # 1) kdeApplications (per package attribute path)
+      # 2) kde related applications (not in kdeApplications)
+      # 3) Other software
+      #
+      # Inherit paths, meta priorities and package overrides
+      # are applied where necessary.
+
+
+      hiPrio = super.lib.hiPrio;
+      lowPrio = super.lib.lowPrio;
+
+
+      # KDE apps selected from:
+      # https://nixos.org/nixos/packages.html#
+      # and
+      # https://github.com/NixOS/nixpkgs/issues/6899
+      # also see:
+      # https://github.com/NixOS/nixpkgs/issues/38887
+
+
+      #
+      # 1) kdeApplications pkgs, alphabetized
+      #
+      
+      inherit (super.kdeApplications) akonadi-calendar
+      akonadi-contacts;
+      akonadi-mime = lowPrio super.kdeApplications.akonadi-mime;
+      inherit (super.kdeApplications) akonadi-notes
+      akonadi-search
+      kdf
+      kleopatra
+      kmail
+      kmail-account-wizard
+      kmailtransport
+      kolourpaint
+      kontact
+      kontactinterface
+      korganizer
+      kdepim-apps-libs;
+      kdepim-runtime = lowPrio super.kdeApplications.kdepim-runtime;
+      inherit (super.kdeApplications) kmix
+      kompare
+      kpimtextedit;
+      ksystemlog = unstable.kdeApplications.ksystemlog;
+      inherit (super.kdeApplications) libkdepim;
+      okteta = lowPrio super.kdeApplications.okteta;
+      inherit (super.kdeApplications) pim-data-exporter
+      pim-sieve-editor
+      pimcommon
+      spectacle;
+
+      #
+      # 2) kde related pkgs, alphabetized
+      #
+
+      akonadi = lowPrio super.akonadi;
+      inherit (super) ark
+      filelight
+      gwenview
+      kate
+      kaddressbook
+      kcalc
+      kcolorchooser
+      #kdeplasma-addons
+      kgpg
+      kgraphviewer
+      konversation
+      ktorrent
+      okular;
+
+      #
+      # 3) Other software, alphabetized
+      #
+
+      inherit (super) atom
+      bc
+      byobu
+      calc
+      firefox
+      git
+      gnupg
+      google-chrome
+      graphviz
+      grive2
+      jq
+      keepass
+      libreoffice-fresh
+      ncdu
+      nix-index
+      notepadqq
+      nox
+      patchelf
+      pidgin
+      pinentry_qt5
+      remmina
+      s-tui
+      skanlite
+      tdesktop
+      tmux
+      vlc;
+      xmr-stak = super.xmr-stak.override { cudaSupport = true; };
+      inherit (super) xsane
+      yadm;
     };
   };
 }
