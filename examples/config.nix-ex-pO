@@ -1,0 +1,16 @@
+{
+  allowUnfree = true;
+  packageOverrides = pkgs: {
+    backup = {
+
+      inherit (pkgs)
+      # bc
+      firefox;
+
+      # inherit (pkgs.kdeApplications)
+      # kompare;
+      
+      xmr-stak = pkgs.xmr-stak.override { cudaSupport = true; };
+    };
+  };
+}

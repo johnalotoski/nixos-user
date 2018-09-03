@@ -1,0 +1,16 @@
+{
+  allowUnfree = true;
+  packageOverrides = super: let self = super.pkgs; in {
+    backup = {
+
+      inherit (super)
+      # bc
+      firefox;
+
+      # inherit (super.kdeApplications)
+      # kompare;
+      
+      xmr-stak = super.xmr-stak.override { cudaSupport = true; };
+    };
+  };
+}

@@ -1,0 +1,19 @@
+# ignoreCollisions avoids name collisions within a single buildEnv, but not between buildEnvs
+{
+  allowUnfree = true;
+  packageOverrides = super: let self = super.pkgs; in with super; {
+    backup = super.buildEnv {
+      name = "backup";
+      paths = [
+        bc
+        firefox
+        git
+        gitMinimal
+        jq
+        # (kdeApplications kompare)
+        (xmr-stak.override { cudaSupport = true; })
+      ];
+    ignoreCollisions = true;
+    };
+  };
+}
