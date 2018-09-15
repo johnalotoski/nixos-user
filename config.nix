@@ -117,6 +117,7 @@ in {
       nix-index
       notepadqq
       nox
+      openssl
       patchelf
       pidgin
       pinentry_qt5
