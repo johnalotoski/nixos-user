@@ -68,8 +68,9 @@ in {
       kdepim-runtime = lowPrio super.kdeApplications.kdepim-runtime;
       inherit (super.kdeApplications) kmix
       kompare
-      kpimtextedit;
-      ksystemlog = unstable.kdeApplications.ksystemlog;
+      kpimtextedit
+      ksystemlog;
+      # ksystemlog = unstable.kdeApplications.ksystemlog;
       inherit (super.kdeApplications) libkdepim;
       okteta = lowPrio super.kdeApplications.okteta;
       inherit (super.kdeApplications) pim-data-exporter
@@ -89,7 +90,7 @@ in {
       kaddressbook
       kcalc
       kcolorchooser
-      #kdeplasma-addons
+      # kdeplasma-addons
       kgpg
       kgraphviewer
       konversation
@@ -109,8 +110,9 @@ in {
       gnupg
       google-chrome
       graphviz
-      grive2
-      jq
+      grive2;
+      inherit (super.jetbrains) pycharm-community;
+      inherit (super) jq
       keepass
       libreoffice-fresh
       ncdu
@@ -126,10 +128,12 @@ in {
       skanlite
       tdesktop
       tmux
+      unzip
       vlc;
       xmr-stak = super.xmr-stak.override { cudaSupport = true; };
       inherit (super) xsane
-      yadm;
+      yadm
+      zip;
     };
   };
 }
