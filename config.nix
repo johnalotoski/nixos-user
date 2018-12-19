@@ -117,17 +117,21 @@ in {
       libreoffice-fresh
       ncdu
       nix-index
+      nixops
       notepadqq
       nox
       openssl
       patchelf
       pidgin
       pinentry_qt5
-      remmina
+      python3;
+      inherit (super.python36Packages) glances;
+      inherit (super) remmina
       s-tui
       skanlite
       tdesktop
       tmux
+      tree
       unzip
       vlc;
       xmr-stak = super.xmr-stak.override { cudaSupport = true; };
