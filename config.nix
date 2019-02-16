@@ -1,4 +1,4 @@
-let unstable = import ~/.nix-defexpr/channels/nixpkgs {};
+let unstable = import ~/.nix-defexpr/channels/nixunstable {};
 in {
   allowUnfree = true;
   packageOverrides = super: let self = super.pkgs; in {
@@ -103,22 +103,30 @@ in {
 
       inherit (super) atom
       bc
+      bind
       byobu
       calc
       firefox
+      fish
+      geckodriver
       git
+      glxinfo
+      gcc
+      gnumake
       gnupg
       google-chrome
       graphviz
-      grive2;
+      grive2
+      inkscape;
       inherit (super.jetbrains) pycharm-community;
       inherit (super) jq
       keepass
       libreoffice-fresh
+      ncat
       ncdu
-      nix-index
-      nixops
-      notepadqq
+      nix-index;
+      nixops = unstable.nixopsUnstable;
+      inherit (super) notepadqq
       nox
       openssl
       patchelf
@@ -126,18 +134,24 @@ in {
       pinentry_qt5
       python3;
       inherit (super.python36Packages) glances;
-      inherit (super) remmina
+      inherit (super) quiterss
+      remmina
       s-tui
       skanlite
+      sqlite
+      sqlitebrowser
+      syncthing
       tdesktop
       tmux
       tree
       unzip
-      vlc;
+      vlc
+      wkhtmltopdf;
       xmr-stak = super.xmr-stak.override { cudaSupport = true; };
       inherit (super) xsane
       yadm
-      zip;
+      zip
+      zlib;
     };
   };
 }
