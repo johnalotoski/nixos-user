@@ -108,8 +108,9 @@ in {
       calc
       firefox
       fish
-      geckodriver
-      git
+      geckodriver;
+      gitFull = hiPrio super.gitAndTools.gitFull;
+      inherit (super) gitkraken
       glxinfo
       gcc
       gnumake
@@ -137,9 +138,11 @@ in {
       inherit (super) quiterss
       remmina
       s-tui
+      shellcheck
       skanlite
       sqlite
       sqlitebrowser
+      sublime3
       syncthing
       tdesktop
       tmux
