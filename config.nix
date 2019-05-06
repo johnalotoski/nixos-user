@@ -3,7 +3,7 @@ in {
   allowUnfree = true;
   packageOverrides = super: let self = super.pkgs; in {
 
-    # Listing declarative packages in this set 
+    # Listing declarative packages in this set
     # rather than a buildEnv allows them to still
     # be visible to `nix-env -qc` and similar commands.
     # Note, however, that removing packages from here
@@ -49,7 +49,7 @@ in {
       #
       # 1) kdeApplications pkgs, alphabetized
       #
-      
+
       inherit (super.kdeApplications) akonadi-calendar
       akonadi-contacts;
       akonadi-mime = lowPrio super.kdeApplications.akonadi-mime;
@@ -101,7 +101,8 @@ in {
       # 3) Other software, alphabetized
       #
 
-      inherit (super) atom
+      inherit (super) adobe-reader
+      atom
       bc
       bind
       byobu
@@ -145,6 +146,7 @@ in {
       sublime3
       syncthing
       tdesktop
+      tig
       tmux
       tree
       unzip
