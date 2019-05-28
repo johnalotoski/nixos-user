@@ -113,12 +113,14 @@ in {
       gitFull = hiPrio super.gitAndTools.gitFull;
       inherit (super) gitkraken
       glxinfo
-      gcc
-      gnumake
+      gcc;
+      inherit (super.python36Packages) glances;
+      inherit (super) gnumake
       gnupg
       google-chrome
       graphviz
       grive2
+      hping
       inkscape;
       inherit (super.jetbrains) pycharm-community;
       inherit (super) jq
@@ -126,6 +128,7 @@ in {
       libreoffice-fresh
       ncat
       ncdu
+      nix-diff
       nix-index;
       nixops = unstable.nixopsUnstable;
       inherit (super) notepadqq
@@ -134,16 +137,17 @@ in {
       patchelf
       pidgin
       pinentry_qt5
-      python3;
-      inherit (super.python36Packages) glances;
-      inherit (super) quiterss
+      pwgen
+      python3
+      quiterss
       remmina
       s-tui
       shellcheck
       skanlite
       sqlite
-      sqlitebrowser
-      sublime3
+      sqlitebrowser;
+      sublime-merge = unstable.sublime-merge;
+      inherit (super) sublime3
       syncthing
       tdesktop
       tig
