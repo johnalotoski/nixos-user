@@ -129,9 +129,12 @@ in {
       jupyter
       keepass
       libreoffice-fresh
-      ncat
+      lsh;                                              # Required for x2go functionality
+      mullvad-vpn = unstable.mullvad-vpn;
+      inherit (super) ncat
       ncdu
       nix-diff
+      nix-du
       nix-index;
       nixops = unstable.nixopsUnstable;
       inherit (super) notepadqq
@@ -164,9 +167,12 @@ in {
       unzip
       vagrant
       vlc
-      wkhtmltopdf
-      xsane
+      wine
+      wkhtmltopdf;
+      x2goclient = unstable.x2goclient;
+      inherit (super) xsane
       yadm
+      zgrviewer
       zip
       zlib
       zoom-us;
