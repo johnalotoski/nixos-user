@@ -55,6 +55,7 @@ in {
       akonadi-mime = lowPrio super.kdeApplications.akonadi-mime;
       inherit (super.kdeApplications) akonadi-notes
       akonadi-search
+      akonadiconsole
       kdf
       kleopatra
       kmail
@@ -102,28 +103,30 @@ in {
       #
 
       inherit (super) adobe-reader
+      ag
       atom
       bc
       bind
       byobu
       calc
+      cointop
       firefox
-      fish
-      geckodriver;
+      fish;
       gitFull = hiPrio super.gitAndTools.gitFull;
       inherit (super) gitkraken
       glxinfo
       gcc;
       inherit (super.python36Packages) glances;
       inherit (super) gnumake
-      gnupg
       google-chrome
       graphviz
       grive2
       hping
       inkscape;
+      inherit (super.python27Packages) ipython;
       inherit (super.jetbrains) pycharm-community;
       inherit (super) jq
+      jupyter
       keepass
       libreoffice-fresh
       ncat
@@ -133,34 +136,40 @@ in {
       nixops = unstable.nixopsUnstable;
       inherit (super) notepadqq
       nox
+      obs-studio
       openssl
+      packet
       patchelf
       pidgin
-      pinentry_qt5
       pwgen
-      python3
-      quiterss
+      python3;
+      inherit (super.qt5) full;                                      # For KDE shortcuts, etc
+      inherit (super) quiterss
       remmina
       s-tui
       shellcheck
       skanlite
+      slack
       sqlite
+      sqlite-interactive
       sqlitebrowser;
       sublime-merge = unstable.sublime-merge;
       inherit (super) sublime3
       syncthing
       tdesktop
+      thunderbird
       tig
       tmux
       tree
       unzip
+      vagrant
       vlc
-      wkhtmltopdf;
-      xmr-stak = super.xmr-stak.override { cudaSupport = true; };
-      inherit (super) xsane
+      wkhtmltopdf
+      xsane
       yadm
       zip
-      zlib;
+      zlib
+      zoom-us;
     };
   };
 }
