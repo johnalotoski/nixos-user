@@ -1,5 +1,6 @@
 let unstable = import ~/.nix-defexpr/channels/nixunstable {};
 in {
+  # allowBroken = true;
   allowUnfree = true;
   packageOverrides = super: let self = super.pkgs; in {
 
@@ -147,6 +148,7 @@ in {
       pwgen
       python3;
       inherit (super.qt5) full;                                      # For KDE shortcuts, etc
+      # qtquickcontrols2;                                            # For KDE Plasma notifications
       inherit (super) quiterss
       remmina
       s-tui
@@ -168,6 +170,7 @@ in {
       vagrant
       vlc
       wine
+      wireshark
       wkhtmltopdf;
       x2goclient = unstable.x2goclient;
       inherit (super) xsane
