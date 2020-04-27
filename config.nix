@@ -15,170 +15,32 @@ in {
     # and re-installing the resulting buildEnv.
     #
     # Install this package set with:
-    #   nix-env -iA <channel_name>.jlotoski [--dry-run]
+    #   nix-env -iA <channel_name>.user [--dry-run]
     #
     # Check for updates against various channels with:
     #   nix-env qc -f <channel_path>
     #   Where <channel_path> example is:
     #     ~/.nix-defexpr/channels/<channel_name>
 
-    jlotoski = rec {
+    user = rec {
 
-      # The following declarative apps are listed
-      # in alphabetical order in each of the following sections:
-      #
-      # 1) kdeApplications (per package attribute path)
-      # 2) kde related applications (not in kdeApplications)
-      # 3) Other software
-      #
       # Inherit paths, meta priorities and package overrides
       # are applied where necessary.
-
 
       hiPrio = super.lib.hiPrio;
       lowPrio = super.lib.lowPrio;
 
-
-      # KDE apps selected from:
-      # https://nixos.org/nixos/packages.html#
-      # and
-      # https://github.com/NixOS/nixpkgs/issues/6899
-      # also see:
-      # https://github.com/NixOS/nixpkgs/issues/38887
-
-
-      #
-      # 1) kdeApplications pkgs, alphabetized
-      #
-
-      inherit (super.kdeApplications) akonadi-calendar
-      akonadi-contacts;
-      akonadi-mime = lowPrio super.kdeApplications.akonadi-mime;
-      inherit (super.kdeApplications) akonadi-notes
-      akonadi-search
-      akonadiconsole
-      kdf
-      kleopatra
-      kmail
-      kmail-account-wizard
-      kmailtransport
-      kolourpaint
-      kontact
-      kontactinterface
-      korganizer
-      kdepim-apps-libs;
-      kdepim-runtime = lowPrio super.kdeApplications.kdepim-runtime;
-      inherit (super.kdeApplications) kmix
-      kompare
-      kpimtextedit
-      ksystemlog;
-      # ksystemlog = unstable.kdeApplications.ksystemlog;
-      inherit (super.kdeApplications) libkdepim;
-      okteta = lowPrio super.kdeApplications.okteta;
-      inherit (super.kdeApplications) pim-data-exporter
-      pim-sieve-editor
-      pimcommon
-      spectacle;
-
-      #
-      # 2) kde related pkgs, alphabetized
-      #
-
-      akonadi = lowPrio super.akonadi;
-      inherit (super) ark
-      filelight
-      gwenview
-      kate
-      kaddressbook
-      kcalc
-      kcolorchooser
-      # kdeplasma-addons
-      kgpg
-      kgraphviewer
-      konversation
-      ktorrent
-      okular;
-
-      #
-      # 3) Other software, alphabetized
-      #
-
-      inherit (super) adobe-reader
-      ag
-      atom
-      bc
-      bind
-      byobu
-      calc
+      inherit (super)
       cointop
       firefox
-      fish;
-      gitFull = hiPrio super.gitAndTools.gitFull;
-      inherit (super) gitkraken
-      glxinfo
-      gcc;
-      inherit (super.python36Packages) glances;
-      inherit (super) gnumake
       google-chrome
-      graphviz
+      gimp
       grive2
-      hping
-      inkscape;
-      inherit (super.python27Packages) ipython;
-      inherit (super.jetbrains) pycharm-community;
-      inherit (super) jq
-      jupyter
-      keepass
+      inkscape
       libreoffice-fresh
-      lsh;                                              # Required for x2go functionality
-      mullvad-vpn = unstable.mullvad-vpn;
-      inherit (super) ncat
-      ncdu
-      nix-diff
-      nix-du
-      nix-index;
-      nixops = unstable.nixopsUnstable;
-      inherit (super) notepadqq
-      nox
-      obs-studio
-      openssl
-      packet
-      patchelf
-      pidgin
-      pwgen
-      python3;
-      inherit (super.qt5) full;                                      # For KDE shortcuts, etc
-      # qtquickcontrols2;                                            # For KDE Plasma notifications
-      inherit (super) quiterss
-      remmina
-      s-tui
-      shellcheck
-      skanlite
-      slack
-      sqlite
-      sqlite-interactive
-      sqlitebrowser;
-      sublime-merge = unstable.sublime-merge;
-      inherit (super) sublime3
-      syncthing
-      tdesktop
-      thunderbird
-      tig
-      tmux
-      tree
-      unzip
-      vagrant
-      vlc
-      wine
-      wireshark
-      wkhtmltopdf;
-      x2goclient = unstable.x2goclient;
-      inherit (super) xsane
-      yadm
-      zgrviewer
-      zip
-      zlib
-      zoom-us;
+      sublime-merge;
+
+      inherit (super.jetbrains) pycharm-community;
     };
   };
 }
